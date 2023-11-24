@@ -1,5 +1,5 @@
+from datetime import datetime
 def get_keys_with_value_true(dictionary):
-    # Возвращает список ключей, значение которых равно True.
     result = []
     for key, value in dictionary.items():
         if value:
@@ -8,18 +8,19 @@ def get_keys_with_value_true(dictionary):
 
 
 def get_unique_elements(input_list):
-    # Возвращает список уникальных элементов из входного списка.
     return list(set(input_list))
 
 
 def get_date_in_format(date):
-    # Возвращает дату в формате "день.месяц.год".
-    day, month, year = map(int, date.split("."))
-    return "{:02d}.{:02d}.{:04d}".format(day, month, year)
+        date_object = datetime.strptime(date, '%Y.%m.%d')
+
+        formatted_date = date_object.strftime('%d.%m.%Y')
+        return formatted_date
+
+print(get_date_in_format('2023.10.23'))
 
 
 def get_elements_with_no_more_than_two_occurrences(input_list):
-    # Возвращает список элементов, которые встречаются не более двух раз.
     element_count = {}
     result = []
     for element in input_list:
@@ -30,12 +31,11 @@ def get_elements_with_no_more_than_two_occurrences(input_list):
 
 
 def get_words_from_string(input_string):
-    # Возвращает список слов в строке, разделенных пробелами.
     return input_string.split()
 
 
 def get_unique_elements_with_count(input_list):
-    # Возвращает словарь уникальных элементов и их количества.
+
     unique_elements_with_count = {}
     for element in input_list:
         unique_elements_with_count[element] = unique_elements_with_count.get(element, 0) + 1
@@ -43,7 +43,6 @@ def get_unique_elements_with_count(input_list):
 
 
 def get_prime_numbers(n):
-    # Возвращает список простых чисел от 2 до n.
     primes = []
     for i in range(2, n + 1):
         is_prime = True
@@ -57,7 +56,6 @@ def get_prime_numbers(n):
 
 
 def get_prime_numbers_in_list(input_list):
-    # Возвращает список элементов, являющихся простыми числами.
     primes = get_prime_numbers(max(input_list, default=0))
     result = []
     for element in input_list:
@@ -67,7 +65,6 @@ def get_prime_numbers_in_list(input_list):
 
 
 def get_difference_between_dates(date1, date2):
-    # Возвращает разницу между двумя датами в днях.
     from datetime import datetime
     date1 = datetime.strptime(date1, "%Y.%m.%d")
     date2 = datetime.strptime(date2, "%Y.%m.%d")
@@ -75,7 +72,7 @@ def get_difference_between_dates(date1, date2):
     return difference.days
 
 def is_perfect_number(num):
-    """Проверяет, является ли число совершенным."""
+
     if num < 2:
         return False
     divisors_sum = 1
@@ -95,11 +92,9 @@ def get_perfect_numbers_from_list(input_list):
     return result
 
 def is_perfect_square(num):
-    """Проверяет, является ли число квадратом целого числа."""
     return num > 0 and (num**0.5).is_integer()
 
 def get_perfect_squares_from_list(input_list):
-    # Возвращает список элементов, являющихся квадратами целых чисел.
     result = []
     for element in input_list:
         if is_perfect_square(element):
